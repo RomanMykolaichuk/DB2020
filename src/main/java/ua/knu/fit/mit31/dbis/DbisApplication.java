@@ -20,7 +20,7 @@ public class DbisApplication implements CommandLineRunner {
     @Transactional
     public void run(String... arg0) throws Exception {
 
-        System.out.println("Begin");
+        System.out.println("======= Begin =======");
         newTableRepository.save(new NewTable("Roman", 17));
         newTableRepository.save(new NewTable("Ivan", 27));
         newTableRepository.save(new NewTable("Stepan", 23));
@@ -31,7 +31,7 @@ public class DbisApplication implements CommandLineRunner {
         System.out.println(newTableRepository.findAllolder20());
         System.out.println(newTableRepository.findAllolder(22));
 
-        System.out.println("End");
+        System.out.println("======= End =======");
 
     }
 
