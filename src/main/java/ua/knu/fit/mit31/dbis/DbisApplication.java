@@ -28,8 +28,10 @@ public class DbisApplication implements CommandLineRunner {
         newTableRepository.save(new NewTable("Marija", 22));
 
         System.out.println(newTableRepository.findAll());
-        System.out.println(newTableRepository.findAllolder20());
-        System.out.println(newTableRepository.findAllolder(22));
+               
+        System.out.println(newTableRepository.findAllOlder20());
+                
+        System.out.println(newTableRepository.findAllOlder(22));
 
         System.out.println("======= End =======");
 

@@ -18,10 +18,10 @@ public interface NewTableRepository extends JpaRepository<NewTable, Integer> {
     @Query(
             value = "SELECT * FROM NEW_TABLE t WHERE t.age > 20",
             nativeQuery = true)
-    Collection<NewTable> findAllolder20();
+    Collection<NewTable> findAllOlder20();
     
     @Query(
             value = "SELECT * FROM NEW_TABLE t WHERE t.age > ?1",
             nativeQuery = true)
-    Collection<NewTable> findAllolder(Integer age);
+    Collection<NewTable> findAllOlder(Integer age);
 }
