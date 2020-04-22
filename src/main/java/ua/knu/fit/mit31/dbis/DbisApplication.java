@@ -59,8 +59,6 @@ public class DbisApplication implements CommandLineRunner {
                 add(vasylko);
             }
         });
-        
-        
 
         System.out.println("======= Showing Result =======");
 
@@ -69,9 +67,11 @@ public class DbisApplication implements CommandLineRunner {
         System.out.println(newTableRepository.findAllOlder20());
 
         System.out.println(newTableRepository.findAllOlder(22));
-        
-        
+
         System.out.println(childTableRepository.findAll());
+
+        System.out.println(newTableRepository.findParents());
+        System.out.println(newTableRepository.findByChildrenAmount(2));
 
         System.out.println("======= End =======");
 
