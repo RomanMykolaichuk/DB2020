@@ -71,7 +71,7 @@ public class DbisApplication implements CommandLineRunner {
         System.out.println(childTableRepository.findAll());
 
         System.out.println(newTableRepository.findParents());
-        System.out.println(newTableRepository.findByChildrenAmount(2));
+        System.out.println(newTableRepository.findByChildrenAmount(1));
 
         System.out.println("======= End =======");
 
