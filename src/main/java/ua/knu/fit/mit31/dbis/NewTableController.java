@@ -24,10 +24,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class NewTableController {
 
     private final NewTableRepository newTableRepository;
+    private final ChildTableRepository childTableRepository;
 
     @Autowired
-    public NewTableController(NewTableRepository newTableRepository) {
+    public NewTableController(NewTableRepository newTableRepository, ChildTableRepository childTableRepository) {
         this.newTableRepository = newTableRepository;
+        this.childTableRepository = childTableRepository;
+
     }
 
     @GetMapping("/")
