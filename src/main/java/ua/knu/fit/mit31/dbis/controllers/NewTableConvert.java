@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.knu.fit.mit31.dbis;
+package ua.knu.fit.mit31.dbis.controllers;
+
+import ua.knu.fit.mit31.dbis.NewTable;
 
 /**
  *

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.knu.fit.mit31.dbis;
+package ua.knu.fit.mit31.dbis.controllers;
 
+import ua.knu.fit.mit31.dbis.repositories.NewTableRepository;
+import ua.knu.fit.mit31.dbis.repositories.ChildTableRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
@@ -15,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ua.knu.fit.mit31.dbis.NewTable;
 
 /**
  *

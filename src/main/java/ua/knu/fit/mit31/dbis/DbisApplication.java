@@ -1,5 +1,7 @@
 package ua.knu.fit.mit31.dbis;
 
+import ua.knu.fit.mit31.dbis.repositories.NewTableRepository;
+import ua.knu.fit.mit31.dbis.repositories.ChildTableRepository;
 import java.util.HashSet;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
