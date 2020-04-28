@@ -90,10 +90,9 @@ public class NewTableController {
 
     private List<NewTableConvert> NewTableConvertor(List<NewTable> modelList) {
 
-        List<NewTableConvert> result = new ArrayList<NewTableConvert>();
+        List<NewTableConvert> result = new ArrayList<>();
         for (NewTable ml : modelList) {
             result.add(new NewTableConvert(ml));
-
         }
 
         return result;
