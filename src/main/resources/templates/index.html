@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html >
+    <head>
+        <title>sampleExamWorkMykolaichuk</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body xmlns:th="http://www.thymeleaf.org">
+        <div><h1>This is an sample exam work of Roman Mykolaichuk</h1></div>
+
+
+        <div><h2>File upload:</h2><a href="/file">File</a></div>
+
+
+        <div th:switch="${tableRows}">
+            <h2 th:case="null">No goods yet!</h2>
+            <div th:case="*">
+                <h2>Rows</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Age</th>
+
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="row : ${tableRows}">
+                            <td th:text="${row.id}"></td>
+                            <td th:text="${row.name}"></td>
+                            <td th:text="${row.age}"></td>
+                            <td><a th:href="@{/edit/{id}(id=${row.id})}">Edit</a></td>
+                            <td><a th:href="@{/delete/{id}(id=${row.id})}">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>      
+            <p><a href="/signup">Add a new rows</a></p>
+        </div>
+    </body>
+</html>
