@@ -30,14 +30,16 @@ public class NewTable {
     private int age;
     
      @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<ChildTable> childTable;
+    private Set<ChildTable> childTable ;
     
-   NewTable(){}
+   NewTable(){
+   childTable = new HashSet<ChildTable>();
+   }
    
    NewTable(String name, int age){
    this.name=name;
    this.age=age;
-   //childTable = new HashSet<ChildTable>();
+   childTable = new HashSet<ChildTable>();
    }
    
    NewTable(String name, int age, Set<ChildTable> childTable){

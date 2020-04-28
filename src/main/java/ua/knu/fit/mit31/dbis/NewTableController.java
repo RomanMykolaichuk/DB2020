@@ -5,6 +5,8 @@
  */
 package ua.knu.fit.mit31.dbis;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,22 +22,23 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class NewTableController {
-      
-    
+
     private final NewTableRepository newTableRepository;
 
     @Autowired
     public NewTableController(NewTableRepository newTableRepository) {
         this.newTableRepository = newTableRepository;
     }
-    
-     @GetMapping("/")
-      public String showIndex(Model model) {
-        model.addAttribute("tableRows", newTableRepository.findAll());
+
+    @GetMapping("/")
+    public String showIndex(Model model) {
+
+        model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
+
         return "index";
     }
-      
-      @GetMapping("/signup")
+
+    @GetMapping("/signup")
     public String showAddForm(NewTable newTable) {
         return "add-rows";
     }
@@ -47,7 +50,7 @@ public class NewTableController {
         }
 
         newTableRepository.save(newTable);
-        model.addAttribute("tableRows", newTableRepository.findAll());
+        model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
         return "index";
     }
 
@@ -69,7 +72,7 @@ public class NewTableController {
             return "update-rows";
         }
         newTableRepository.save(newTable);
-        model.addAttribute("tableRows", newTableRepository.findAll());
+        model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
         return "index";
     }
 
@@ -78,7 +81,19 @@ public class NewTableController {
         NewTable newTable = newTableRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         newTableRepository.delete(newTable);
-        model.addAttribute("tableRows", newTableRepository.findAll());
+        model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
         return "index";
+    }
+
+    private List<NewTableConvert> NewTableConvertor(List<NewTable> modelList) {
+
+        List<NewTableConvert> result = new ArrayList<NewTableConvert>();
+        for (NewTable ml : modelList) {
+            result.add(new NewTableConvert(ml));
+
+        }
+
+        return result;
+
     }
 }

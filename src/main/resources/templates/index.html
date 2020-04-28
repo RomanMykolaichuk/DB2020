@@ -27,6 +27,7 @@ and open the template in the editor.
                             <th>id</th>
                             <th>Name</th>
                             <th>Age</th>
+                            <th>Child</th>
 
                             <th>Edit</th>
                             <th>Delete</th>
@@ -37,6 +38,9 @@ and open the template in the editor.
                             <td th:text="${row.id}"></td>
                             <td th:text="${row.name}"></td>
                             <td th:text="${row.age}"></td>
+                            <td th:text="${row.child}"></td>
+
+
                             <td><a th:href="@{/edit/{id}(id=${row.id})}">Edit</a></td>
                             <td><a th:href="@{/delete/{id}(id=${row.id})}">Delete</a></td>
                         </tr>
