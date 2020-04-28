@@ -87,6 +87,6 @@ public class ChildTable {
     
      @Override
     public String toString(){
-    return parent.getName()+"( "+getName()+", "+getAge()+ ")";
+    return getName()+", "+getAge();
     }
 }
