@@ -5,7 +5,7 @@
  */
 package ua.knu.fit.mit31.dbis.controllers;
 
-import ua.knu.fit.mit31.dbis.NewTable;
+import ua.knu.fit.mit31.dbis.dao.NewTable;
 
 /**
  *

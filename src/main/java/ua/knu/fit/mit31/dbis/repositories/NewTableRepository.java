@@ -8,7 +8,7 @@ package ua.knu.fit.mit31.dbis.repositories;
 import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ua.knu.fit.mit31.dbis.NewTable;
+import ua.knu.fit.mit31.dbis.dao.NewTable;
 
 /**
  *

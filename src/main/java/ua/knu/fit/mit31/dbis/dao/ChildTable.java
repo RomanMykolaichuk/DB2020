@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.knu.fit.mit31.dbis;
+package ua.knu.fit.mit31.dbis.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,10 +31,10 @@ public class ChildTable {
     @JoinColumn(name = "parent_id")
     private NewTable parent;
 
-    ChildTable() {
+    public ChildTable() {
     }
 
-    ChildTable(String name, int age, NewTable parent) {
+    public ChildTable(String name, int age, NewTable parent) {
         this.name = name;
         this.age = age;
         this.parent = parent;

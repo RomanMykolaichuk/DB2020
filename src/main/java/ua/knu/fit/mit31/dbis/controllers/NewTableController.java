@@ -8,6 +8,7 @@ package ua.knu.fit.mit31.dbis.controllers;
 import ua.knu.fit.mit31.dbis.repositories.NewTableRepository;
 import ua.knu.fit.mit31.dbis.repositories.ChildTableRepository;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ua.knu.fit.mit31.dbis.NewTable;
+import ua.knu.fit.mit31.dbis.dao.NewTable;
 
 /**
  *
@@ -43,11 +44,20 @@ public class NewTableController {
 
         return "index";
     }
+    
+     @GetMapping("/child/{id}")
+    public String showChildAmount(@PathVariable("id") int id, Model model) {
+         
+        model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findByChildrenAmount(id)));
+        return "index";
+    }
+    
 
     @GetMapping("/signup")
     public String showAddForm(NewTable newTable) {
         return "add-rows";
     }
+    
 
     @PostMapping("/addrows")
     public String addUser(@Valid NewTable newTable, BindingResult result, Model model) {
@@ -91,9 +101,9 @@ public class NewTableController {
         return "index";
     }
 
-    private List<NewTableConvert> NewTableConvertor(List<NewTable> modelList) {
+    private Collection<NewTableConvert> NewTableConvertor(Collection<NewTable> modelList) {
 
-        List<NewTableConvert> result = new ArrayList<>();
+        Collection<NewTableConvert> result = new ArrayList<>();
         for (NewTable ml : modelList) {
             result.add(new NewTableConvert(ml));
         }

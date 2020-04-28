@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.knu.fit.mit31.dbis;
+package ua.knu.fit.mit31.dbis.dao;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,17 +32,17 @@ public class NewTable {
      @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ChildTable> childTable ;
     
-   NewTable(){
+   public NewTable(){
    childTable = new HashSet<ChildTable>();
    }
    
-   NewTable(String name, int age){
+   public NewTable(String name, int age){
    this.name=name;
    this.age=age;
    childTable = new HashSet<ChildTable>();
    }
    
-   NewTable(String name, int age, Set<ChildTable> childTable){
+   public NewTable(String name, int age, Set<ChildTable> childTable){
    this.name=name;
    this.age=age;
    this.childTable = childTable;
