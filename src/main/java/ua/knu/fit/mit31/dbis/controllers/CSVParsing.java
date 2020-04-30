@@ -26,8 +26,6 @@ import ua.knu.fit.mit31.dbis.dao.NewTable;
  */
 public class CSVParsing {
 
-   
-
     public static ArrayList<NewTable> loadData(MultipartFile multipartFile) throws IOException {
         ArrayList<NewTable> result = new ArrayList<>();
 
@@ -35,7 +33,7 @@ public class CSVParsing {
 
         try {
 
-            File helperFile = File.createTempFile("data","csv");
+            File helperFile = File.createTempFile("data", "csv");
 
             FileUtils.writeByteArrayToFile(helperFile, multipartFile.getBytes());
 
@@ -47,7 +45,7 @@ public class CSVParsing {
                 NewTable tableRow = new NewTable(record.get(0).trim() + " " + record.get(1).trim(),
                         Integer.parseInt(record.get(2).trim()));
                 result.add(tableRow);
-                
+
             }
             helperFile.deleteOnExit();
 
@@ -56,7 +54,7 @@ public class CSVParsing {
         } finally {
             try {
                 in.close();
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(CSVParsing.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -5,6 +5,7 @@
  */
 package ua.knu.fit.mit31.dbis.controllers;
 
+import java.io.IOException;
 import ua.knu.fit.mit31.dbis.repositories.NewTableRepository;
 import ua.knu.fit.mit31.dbis.repositories.ChildTableRepository;
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.knu.fit.mit31.dbis.dao.NewTable;
 
 /**
@@ -99,6 +103,50 @@ public class NewTableController {
         newTableRepository.delete(newTable);
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
         return "index";
+       
+        
+    }
+    
+    @GetMapping("/file")
+    public String fileChoosing() {
+
+        return "file";
+    }
+
+    @PostMapping("/upload")
+    public String singleFileUpload(@RequestParam("file") MultipartFile file,
+            RedirectAttributes redirectAttributes) {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            return "redirect:uploadStatus";
+        }
+
+        try {
+
+            ArrayList<NewTable> dataPopulating
+                    = CSVParsing.loadData(file);
+            int rowsCount = 0;
+            for (NewTable newRow : dataPopulating) {
+
+                newTableRepository.save(newRow);
+                rowsCount++;
+            }
+
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded " + rowsCount
+                    + " rows from '" + file.getOriginalFilename() + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/uploadStatus";
+    }
+
+    @GetMapping("/uploadStatus")
+    public String uploadStatus() {
+        return "uploadStatus";
     }
 
     private Collection<NewTableConvert> NewTableConvertor(Collection<NewTable> modelList) {
