@@ -53,7 +53,7 @@ public class NewTableController {
     public String showChildAmount(@PathVariable("id") int id, Model model) {
          
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findByChildrenAmount(id)));
-        return "redirect:/";
+        return "index";
     }
     
 
