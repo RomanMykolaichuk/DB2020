@@ -53,7 +53,7 @@ public class NewTableController {
     public String showChildAmount(@PathVariable("id") int id, Model model) {
          
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findByChildrenAmount(id)));
-        return "index";
+        return "redirect:/";
     }
     
 
@@ -71,7 +71,7 @@ public class NewTableController {
 
         newTableRepository.save(newTable);
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
@@ -93,7 +93,7 @@ public class NewTableController {
         }
         newTableRepository.save(newTable);
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
@@ -102,7 +102,7 @@ public class NewTableController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         newTableRepository.delete(newTable);
         model.addAttribute("tableRows", NewTableConvertor(newTableRepository.findAll()));
-        return "index";
+        return "redirect:/";
        
         
     }
